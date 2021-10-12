@@ -1,0 +1,45 @@
+
+.top-coach{
+  font-size: 18px;
+.card-coach{
+  width: 252px;
+margin-right: 1em;
+padding: 2em;
+background: #000000;
+border-radius: 10px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+.name{
+  color: #C4C4C4;
+  font-size: 14px;
+}
+.approve{
+  color: #00BB4C;
+}
+.pending{
+  color: #FFD601;
+}
+button{
+  color: #811AFF;
+  font-weight: 600;
+font-size: 16px;
+background: #0000;
+margin-top: 2em;
+&:hover{
+  background: #5b4774;
+// opacity: 0.1;
+border-radius: 3px;
+}
+}
+}
+  
+
+
+   
+    
+
+   
+  
+}

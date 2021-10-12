@@ -1,0 +1,15 @@
+// @import "../../assets//styles/variable.scss";
+
+.layout {
+color: #fff;
+display: flex;
+position: relative;
+  .left-menu{
+    background: #131313;;
+    width: 100%;
+    min-height: 100vh;
+    margin-left: 250px;
+    padding: 3em 4em;
+  }
+
+}

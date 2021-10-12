@@ -1,0 +1,53 @@
+.details-coach {
+  font-size: 18px;
+  color: #c4c4c4;
+  .name {
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .coach-photo {
+    width: 150px;
+    margin-right: 2em;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .new-btn {
+    background: #131313;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    color: #fff;
+    margin-left: 2em;
+  }
+  .delete {
+    width: 124px;
+    height: 40px;
+    background: rgba(248, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #f80000;
+  }
+  .pending {
+    background: #131313;
+    border: 1px solid #ffd601;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #ffd601;
+    width: 124px;
+    height: 40px;
+    margin-right: 1em;
+  }
+  .approve {
+    color: #00bb4c;
+    background: rgba(0, 187, 76, 0.1);
+    border-radius: 5px;
+    width: 124px;
+    height: 40px;
+    margin-right: 1em;
+  }
+}

@@ -1,0 +1,153 @@
+.all-video {
+.top-coach{
+  font-size: 18px;
+.card-coach{
+  width: 252px;
+// height: 270px;
+padding: 2em;
+background: #000000;
+border-radius: 10px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+.name{
+  color: #C4C4C4;
+  font-size: 14px;
+}
+.approve{
+  color: #00BB4C;
+}
+.pending{
+  color: #FFD601;
+}
+button{
+  color: #811AFF;
+  font-weight: 600;
+font-size: 16px;
+background: #0000;
+margin-top: 2em;
+&:hover{
+  background: #5b4774;
+// opacity: 0.1;
+border-radius: 3px;
+}
+}
+}
+  .new-btn{
+    background: #131313;
+border: 1px solid #FFFFFF;
+border-radius: 5px;
+width: 210px;
+height: 53px;
+color: #fff;
+margin-top: 4em;
+  }
+}
+
+  .all-files {
+    margin-top: 4em;
+    .video-tab {
+      .tab-section {
+        background: #000000;
+        border-radius: 5px;
+        width: 404px;
+        display: flex;
+        justify-content: space-between;
+        padding: 1em;
+        .tab {
+          color: #fff;
+
+          border-radius: 5px;
+          padding: 0.3em 1em;
+          cursor: pointer;
+        }
+        .active-tab {
+          background: #811aff;
+        }
+      }
+    }
+    .search-section {
+      background: #242424;
+      border-radius: 5px;
+      width: 279px;
+      height: 41px;
+      margin-left: auto;
+      margin-bottom: -1em;
+      input {
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        width: 239px;
+        outline: none;
+        color: #ffff;
+        padding: 0 1em;
+      }
+    }
+    .search-btn{
+      background: #515151;
+border-radius: 5px;
+color: #FFFFFF;
+height: 41px;
+margin-left: .5em;
+width: 90px;
+    }
+    .table-row {
+      background: #000000;
+      box-sizing: border-box;
+      border-radius: 10px;
+      border: 1px solid #000000;
+      color: #fff;
+      // cursor: pointer;
+      &:hover {
+        border: 1px solid #811aff;
+      }
+      .view {
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+        border-radius: 5px;
+        background-color: transparent;
+        color: #fff;
+        width: 131px;
+        height: 34px;
+      }
+      .analyzing{
+        border: 1px solid #A0A0A0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        background-color: transparent;
+        color: #A0A0A0;
+        font-style: italic;
+        width: 131px;
+        height: 34px;
+      }
+      .delete {
+        color: #d52121;
+        cursor: pointer;
+      }
+      .status {
+        text-decoration-line: underline;
+        color: #aaaaaa;
+      }
+      .success {
+        color: #00bb4c;
+      }
+      .pending {
+        color: #ffbb33;
+      }
+      img{
+        margin-right: 2em;
+      }
+    }
+
+    .no-file{
+      background: #000000;
+      margin-top: 2em;
+      display: grid;
+      place-content: center;
+      padding: 3em;
+      text-align: center;
+      border-radius: 10px;
+    }
+  }
+}
