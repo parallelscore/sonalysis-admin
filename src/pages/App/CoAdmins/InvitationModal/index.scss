@@ -1,0 +1,13 @@
+.invitation_container {
+    display: grid;
+    place-items: center;
+    background-color: #131313;
+    border-radius: 25px;
+    width: 538px;
+    padding: 4em;
+    text-align: center;
+    .notification {
+        font-size: 22px;
+        line-height: 26px;
+    }
+}

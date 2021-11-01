@@ -1,0 +1,74 @@
+.co_admin_container {
+    margin-top: 2em;
+    .title {
+        font-weight: 500;
+    }
+    .search_container {
+        margin-top: 2em;
+        .new_btn {
+            background: #131313;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            width: 156px;
+            height: 39px;
+            color: #fff;
+        }
+        .search_section {
+            background: #242424;
+            border-radius: 5px;
+            width: 279px;
+            height: 41px;
+            margin-left: auto;
+            margin-bottom: -1em;
+            input {
+                height: 100%;
+                background-color: transparent;
+                border: none;
+                width: 239px;
+                outline: none;
+                color: #ffff;
+                padding: 0 1em;
+            }
+        }
+        .search_btn {
+            background: #515151;
+            border-radius: 5px;
+            color: #ffffff;
+            height: 41px;
+            margin-left: 0.5em;
+            width: 90px;
+        }
+    }
+    .card_section {
+        .card_coach {
+            width: 252px;
+            padding: 2em;
+            background: #000000;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .name {
+                color: #ffffff;
+                font-size: 16px;
+            }
+            .email {
+                font-size: 16px;
+                color: #969696;
+            }
+
+            button {
+                color: #811aff;
+                font-weight: 600;
+                font-size: 16px;
+                background: #0000;
+                margin-top: 2em;
+                &:hover {
+                    background: #5b4774;
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
+}
