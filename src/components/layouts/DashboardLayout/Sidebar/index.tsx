@@ -10,6 +10,7 @@ import SettingIcon from "../../../../assets/icons/settings.svg"
 import ReelIconBlack from "../../../../assets/icons/hightlight.svg"
 import LogoutIcon from "../../../../assets/icons/logout.svg"
 import { logOut} from "../../../../utils"
+import { useDispatch, useSelector } from "react-redux";
 
 export interface CardProps {
   number?: number;
@@ -19,26 +20,38 @@ export interface CardProps {
 }
 
 const Home = () => {
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const { profile, upload }: any = useSelector((state) => state);
+  const {role}=profile
+
 
   const menu = [
     {
       id: 1,
       icon: DashboardIcon,
       title: "Dashboard",
+      access: ["admin", "owner", "co-admin"],
       link: "/app/dashboard",
     },
     {
       id: 2,
       icon: ClubLibrary,
       title: "Club Library",
+      access: ["admin", "co-admin"],
       link: "/app/clubs",
+    },
+    {
+      id: 2,
+      icon: ClubLibrary,
+      title: "Admins",
+      access: ["owner",],
+      link: "/app/admins",
     },
     {
       id: 3,
       icon: Admins,
       title: "Co-Admins",
+      access: ["admin", "owner"],
       link: "/app/admins",
     },
   ]
@@ -50,14 +63,16 @@ const Home = () => {
       </div>
       <ul>
         {
-          menu.map((item,index)=>(
-            <li>
+          menu.map((item,index)=>{
+
+            if(item.access.includes(role)){
+              return(<li>
               <NavLink to={item.link} className="menu" activeClassName="active">
 
               <img src={item.icon} alt="logout" /> <div>{item.title}</div>
               </NavLink>
-            </li>
-          ))
+            </li>)}
+          })
         }
       </ul>
       <div className="logout-div" >
