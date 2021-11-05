@@ -14,9 +14,10 @@ export default {
   postUpload: `${baseURL}/upload/update-link`,
   getS3Link: `${baseURL}/upload/presigned-upload-url`,
   deleteVideo: (videoId) =>`${baseURL}/upload/${videoId}`,
-  
   createClub: `${baseURL}/club`,
+  createCoAdmin: `${baseURL}/users/co-admin`,
   getAllCoach: `${baseURL}/users/coach`,
+ getAllCoAdmin: `${baseURL}/users/coach`,
   getAllClub: (status) =>`${baseURL}/club/all-club?status=${status}`,
   clubUpdate: (club_id) =>`${baseURL}/club/${club_id}`,
   getClubsByCoachId: (coachId, status) =>`${baseURL}/club/coach/${coachId}?staus=${status}`,

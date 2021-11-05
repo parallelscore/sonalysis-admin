@@ -2,25 +2,58 @@ import React, { useState } from "react";
 import "./index.scss";
 import Modal from "../../../../components/layouts/Modal";
 import UserIcon from "../../../../assets/images/user.png";
+import swal from "sweetalert";
+import axios from "axios";
+import { getCall, postCall } from "../../../../api/request";
+import endPoint from "../../../../api/endPoints";
 
 const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
-  const [userData, setUserData] = useState({
+  const [fileLogo, setFileLogo] = useState("");
+  const [file, setFile]: any = useState("");
+  const [coAdminData, setCoAdminData] = useState({
     fullName: "",
     email: "",
+    photo: "",
+    permission: [],
   });
-  const handleFileUpload = () => {
-    console.log("get image from user's device");
-  };
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleOnchange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setUserData({ ...userData, [name]: value });
+    if (name === "logo") {
+      name === "logo" && setFileLogo(URL.createObjectURL(e.target.files[0]));
+      return setFile(e.target.file);
+    }
+    setCoAdminData({ ...coAdminData, [name]: value });
   };
-  const hide = () => {
-    setShowInvitationModal(true);
-    setShowModal(false);
-  };
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setIsLoading(true);
+    // getImgLink(file);
+    // createCoAdmin(imgName)
+    setErrorMessage("");
+  }
+
+  function createCoAdmin(imgName) {
+    coAdminData.photo = imgName;
+    postCall(endPoint.createCoAdmin, coAdminData).then((res) => {
+      setIsLoading(false);
+      if (res?.status === 200) {
+        console.log("uploaded co admin data", res.data.data);
+        console.log("uploaded co admin dataaa", coAdminData);
+        swal("Success", "Co Admin created successfully!", "success");
+        setShowInvitationModal(true);
+        setShowModal(false);
+      }
+      setErrorMessage(res.data.message);
+      setInterval(() => setErrorMessage(""), 8000);
+    });
+  }
+
   return (
     <Modal>
       <div className="create_admin_modal_container">
@@ -29,11 +62,20 @@ const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
         <form>
           <div className="user_icon_container">
             <div className="icon_container">
-              <img src={UserIcon} alt="user icon" />
+              <label htmlFor="clubLogo" className="logo">
+                {fileLogo && <img src={UserIcon} alt="logo" />}
+                {!fileLogo && "Upload Your Logo"}
+              </label>
+              <input
+                type="file"
+                name="logo"
+                id="coAdminLogo"
+                className="logo-file"
+                onChange={handleOnchange}
+                accept="image/*"
+              />
             </div>
-            <div className="upload_image" onClick={handleFileUpload}>
-              Upload Image
-            </div>
+            <div className="upload_image">Upload Image</div>
           </div>
 
           <div className="mt-3">
@@ -87,7 +129,7 @@ const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
             >
               Cancel
             </button>{" "}
-            <button className="invite_btn" onClick={hide}>
+            <button className="invite_btn" onClick={handleSubmit}>
               Send invite
             </button>
           </div>

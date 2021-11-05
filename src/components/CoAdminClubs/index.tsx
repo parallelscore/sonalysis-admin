@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "./index.scss";
+import "../CoachClubs/index.scss";
 import SearchIcon from "../../assets/icons/search-icon.svg";
 import EmptyFile from "../../assets/icons/manchester-icon.svg";
-import { getCall } from "../../api/request";
-import endPoint from "../../api/endPoints";
 import NoClub from "../../assets/images/no-club.svg";
+import DeleteIcon from "../../assets/icons/delete.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUploadRequest, deleteRequest } from "../../store/upload/actions";
 import moment from "moment";
 import { LoopingRhombusesSpinner } from "react-epic-spinners";
 import swal from "sweetalert";
 
-const CoachClubs = ({ clubs }) => {
-  const { profile, upload }: any = useSelector((state) => state);
-  const { allUploadData, getLoading, getError } = upload;
+const CoAdminClubs = ({ clubs }) => {
+  const { profile }: any = useSelector((state) => state);
 
   const dispatch = useDispatch();
   const [tab, setTab] = useState(1);
@@ -53,9 +50,6 @@ const CoachClubs = ({ clubs }) => {
         const userId = profile._id;
         handleFetchData({ userId, page: 1, analyzed: "all" });
       }
-      // else {
-      //   swal("Your imaginary file is safe!");
-      // }
     });
   };
 
@@ -65,8 +59,6 @@ const CoachClubs = ({ clubs }) => {
     setTab(tab);
     clubDetail(status);
   };
-
-  // to="/app/clubs/details"
 
   return (
     <div className="all-video">
@@ -79,7 +71,7 @@ const CoachClubs = ({ clubs }) => {
           <button className="search-btn">Search</button>
         </div>
         <div className="video-tab">
-          <h3 className="mb-4">All Clubs</h3>
+          <h3 className="mb-4">Clubs/Players</h3>
           <div className="tab-section">
             <div
               className={`tab ${tab === 1 && "active-tab"}`}
@@ -157,7 +149,7 @@ const CoachClubs = ({ clubs }) => {
                         handleVideoDelete({ id: item._id, name: item.filename })
                       }
                     >
-                      Delete
+                      <img src={DeleteIcon} alt="delete icon" />
                     </div>
                   </div>
                 ))}
@@ -184,4 +176,4 @@ const CoachClubs = ({ clubs }) => {
   );
 };
 
-export default CoachClubs;
+export default CoAdminClubs;
