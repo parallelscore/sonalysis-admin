@@ -78,7 +78,7 @@ const CoAdmins = ({name, endpoint}) => {
       )}
       {noCoAdminData && (
         <div className="no_data">
-          <h4>There are no Co-Admin data at the moment.</h4>
+          <h4>There are no data at the moment.</h4>
         </div>
       )}
       {showModal && (
