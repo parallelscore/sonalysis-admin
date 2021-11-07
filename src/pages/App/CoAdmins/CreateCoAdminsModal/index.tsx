@@ -3,11 +3,10 @@ import "./index.scss";
 import Modal from "../../../../components/layouts/Modal";
 import UserIcon from "../../../../assets/images/user.png";
 import swal from "sweetalert";
-import axios from "axios";
-import { getCall, postCall } from "../../../../api/request";
+import { postCall, cloudinaryPostCall } from "../../../../api/request";
 import endPoint from "../../../../api/endPoints";
 
-const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
+const CreateCoAdmin = ({ showInvitationModal, setShowModal, name }) => {
   const [fileLogo, setFileLogo] = useState("");
   const [file, setFile]: any = useState("");
   const [coAdminData, setCoAdminData] = useState({
@@ -15,6 +14,7 @@ const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
     email: "",
     photo: "",
     permission: [],
+    role:""
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -23,9 +23,10 @@ const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
   const handleOnchange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    if (name === "logo") {
-      name === "logo" && setFileLogo(URL.createObjectURL(e.target.files[0]));
-      return setFile(e.target.file);
+    if (name === "photo") {
+      setFile(e.target.files[0]);
+      setFileLogo(URL.createObjectURL(e.target.files[0]));
+      return;
     }
     setCoAdminData({ ...coAdminData, [name]: value });
   };
@@ -33,50 +34,67 @@ const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
   async function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    // getImgLink(file);
-    // createCoAdmin(imgName)
+    createCoAdmin(file);
     setErrorMessage("");
   }
 
-  function createCoAdmin(imgName) {
-    coAdminData.photo = imgName;
-    postCall(endPoint.createCoAdmin, coAdminData).then((res) => {
-      setIsLoading(false);
+  function createCoAdmin(file) {
+    var cloudinaryData = new FormData();
+    cloudinaryData.append("upload_preset", "sonalysis-upload");
+    cloudinaryData.append("file", file);
+
+    cloudinaryPostCall(endPoint.cloudinaryPost, cloudinaryData).then((res) => {
       if (res?.status === 200) {
-        console.log("uploaded co admin data", res.data.data);
-        console.log("uploaded co admin dataaa", coAdminData);
-        swal("Success", "Co Admin created successfully!", "success");
-        setShowInvitationModal(true);
-        setShowModal(false);
+        const responseFetch = res.data;
+        const { secure_url } = responseFetch;
+        coAdminData.photo = secure_url;
+        coAdminData.role = name==="Admins"?"admin":"co-admin"
+
+        postCall(endPoint.createCoAdmin, coAdminData).then((res) => {
+          setIsLoading(false);
+          if (res?.status === 200) {
+            swal("Success", "Co-Admin created successfully!", "success");
+            setShowModal(false);
+            showInvitationModal(coAdminData.email);
+          }
+          setErrorMessage(res.data.message);
+          setInterval(() => setErrorMessage(""), 8000);
+        });
       }
-      setErrorMessage(res.data.message);
-      setInterval(() => setErrorMessage(""), 8000);
     });
   }
+  const checkCompleted = (coAdminData.email && coAdminData.fullName && fileLogo)?true:false;
 
   return (
     <Modal>
       <div className="create_admin_modal_container">
-        <div className="text">Create a Co-admin</div>
+        <div className="text">Create a {name}</div>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="user_icon_container">
             <div className="icon_container">
-              <label htmlFor="clubLogo" className="logo">
-                {fileLogo && <img src={UserIcon} alt="logo" />}
-                {!fileLogo && "Upload Your Logo"}
+              <label htmlFor="photo" className="user-photo">
+                <img src={fileLogo ? fileLogo : UserIcon} alt="logo" />
               </label>
               <input
                 type="file"
-                name="logo"
-                id="coAdminLogo"
-                className="logo-file"
+                name="photo"
+                id="photo"
+                required
+                className="logo-file d-none"
                 onChange={handleOnchange}
                 accept="image/*"
               />
             </div>
-            <div className="upload_image">Upload Image</div>
+            <label htmlFor="photo" className="upload_image">
+              {fileLogo ? "Change" : "Upload"} Image
+            </label>
           </div>
+          {errorMessage && (
+            <div className="alert alert-danger mt-3" role="alert">
+              {errorMessage}
+            </div>
+          )}
 
           <div className="mt-3">
             <label htmlFor="fullName">Full Name</label>
@@ -84,6 +102,7 @@ const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
               type="text"
               name="fullName"
               id="fullName"
+              required
               placeholder="John Dough"
               onChange={handleOnchange}
             />
@@ -93,6 +112,7 @@ const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
             <input
               type="email"
               name="email"
+              required
               id="email"
               placeholder="jondough1@gmail.com"
               onChange={handleOnchange}
@@ -100,7 +120,7 @@ const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
           </div>
 
           <div className="mt-4">
-            <p>Edit Acesss</p>
+            <p>Grant Acesss</p>
             <div className="d-flex teams_container">
               <input
                 type="checkbox"
@@ -123,14 +143,19 @@ const CreateCoAdmin = ({ setShowInvitationModal, setShowModal }) => {
             </div>
           </div>
           <div className="d-flex btns_container">
-            <button
-              className="cancel"
-              onClick={() => setShowInvitationModal(false)}
-            >
+            <button className="cancel" onClick={() => setShowModal(false)}>
               Cancel
             </button>{" "}
-            <button className="invite_btn" onClick={handleSubmit}>
+            <button className={checkCompleted?"invite_btn_done":"invite_btn"} disabled={!checkCompleted }>
               Send invite
+              {isLoading && (
+                <div
+                  className="spinner-border text-light spinner-border-sm"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              )}
             </button>
           </div>
         </form>

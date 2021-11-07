@@ -49,11 +49,14 @@ const App = (props) => {
           {/* <Route  path={`${path}/admins`}>
             <PlayerLibrary />
           </Route> */}
-          <Route path={`${path}/admins`}>
-            <CoAdmins />
-          </Route>
-          <Route path={`${path}/view-co-admins/:admin_id`}>
+          <Route path={`${path}/co-admins/:admin_id`}>
             <ViewCoAdmins />
+          </Route>
+          <Route path={`${path}/co-admins`}>
+            <CoAdmins name={"Co-Admins"} endpoint={"co-admin"}/>
+          </Route>
+          <Route path={`${path}/admins`} exact>
+            <CoAdmins name={"Admins"} endpoint={"admin"} />
           </Route>
         </Switch>
       </DashboardLayout>

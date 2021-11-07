@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import "./index.scss"
 import SearchIcon from "../../assets/icons/search-icon.svg"
 import EmptyFile from "../../assets/icons/manchester-icon.svg"
+import DeleteIcon from "../../assets/icons/delete.svg"
 import {getCall, putCall} from "../../api/request"
 import endPoint from "../../api/endPoints"
 import NoClub from "../../assets/images/no-club.svg"
@@ -196,7 +197,7 @@ const Analytics = () => {
                       </div>
                     </div>
                     <div className="col-2 delete" onClick={() => handleVideoDelete({ id: item._id, name: item.filename })}>
-                      Delete
+                    <img src={DeleteIcon} alt="delete icon" />
                     </div>
                   
                   </div>

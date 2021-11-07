@@ -7,6 +7,7 @@ import { getCall } from "../../api/request";
 import endPoint from "../../api/endPoints";
 import NoClub from "../../assets/images/no-club.svg";
 import { useDispatch, useSelector } from "react-redux";
+import DeleteIcon from "../../assets/icons/delete.svg"
 import { fetchUploadRequest, deleteRequest } from "../../store/upload/actions";
 import moment from "moment";
 import { LoopingRhombusesSpinner } from "react-epic-spinners";
@@ -157,7 +158,7 @@ const CoachClubs = ({ clubs }) => {
                         handleVideoDelete({ id: item._id, name: item.filename })
                       }
                     >
-                      Delete
+                      <img src={DeleteIcon} alt="delete icon" />
                     </div>
                   </div>
                 ))}

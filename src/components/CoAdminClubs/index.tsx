@@ -161,10 +161,10 @@ const CoAdminClubs = ({ clubs }) => {
                     alt="empty-file"
                     className="mx-auto mt-4 mb-4"
                   />
-                  <h3>No club Found</h3>
+                  <h3>No club created</h3>
                   <div className="text mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Tortor, nullam id aliquam.
+                    {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Tortor, nullam id aliquam. */}
                   </div>
                 </div>
               )}

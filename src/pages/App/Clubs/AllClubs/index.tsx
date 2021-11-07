@@ -85,7 +85,7 @@ const Analytics = () => {
         </div>
         <div className="card-section d-flex justify-content-evenly flex-wrap">
           {allUploadData.length &&
-            allUploadData?.slice(0, 4)?.map((coach) => (
+            allUploadData.filter((item)=>item.role==="coach")?.slice(0, 4)?.map((coach) => (
               <div className="card-coach mt-5 mr-5">
                 <img src={CoachPhoto} alt="coach photo" />
                 <div className="name mt-2">Name:</div>

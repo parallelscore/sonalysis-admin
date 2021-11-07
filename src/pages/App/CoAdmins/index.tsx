@@ -9,22 +9,22 @@ import { LoopingRhombusesSpinner } from "react-epic-spinners";
 import endPoint from "../../../api/endPoints";
 import { getCall } from "../../../api/request";
 
-const CoAdmins = () => {
+const CoAdmins = ({name, endpoint}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [noCoAdminData, setNoCoAdminData] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showInvitationModal, setShowInvitationModal] = useState(false);
   const [coAdminData, setCoAdminData]: any = useState([]);
+  const [inviteEmail, setInviteEmail]: any = useState("");
 
   useEffect(() => {
     getAllCoAdmins();
-  }, []);
+  }, [endpoint]);
 
   const getAllCoAdmins = () => {
     setIsLoading(true);
-    getCall(endPoint.getAllCoAdmin)
+    getCall(endPoint.getAllUsersByRole(endpoint))
       .then((response) => {
-        console.log("response for admin data", response.data.data);
         if (response.status === 200) {
           setCoAdminData(response.data.data);
           setIsLoading(false);
@@ -35,11 +35,16 @@ const CoAdmins = () => {
       })
       .catch(() => {});
   };
-  console.log("adminn", coAdminData.email);
+
+  const showInvitation = (email:string)=>{
+    setInviteEmail(email)
+    setShowInvitationModal(true)
+
+  }
 
   return (
     <div className="co_admin_container">
-      <div className="title">Co-Admins (8)</div>
+      <div className="title">{name} {coAdminData.length}</div>
 
       <div className="search_container d-flex">
         <button className="new_btn" onClick={() => setShowModal(true)}>
@@ -64,7 +69,7 @@ const CoAdmins = () => {
               <div className="name mt-2">{admin.fullName}</div>
               <div className="email">{admin.email}</div>
 
-              <Link to={`/app/view-co-admins/${admin._id}`}>
+              <Link to={`/app/co-admins/${admin._id}`}>
                 <button>View</button>
               </Link>
             </div>
@@ -79,11 +84,12 @@ const CoAdmins = () => {
       {showModal && (
         <CreateCoAdmin
           setShowModal={setShowModal}
-          setShowInvitationModal={setShowInvitationModal}
+          showInvitationModal={showInvitation}
+          name={name}
         />
       )}
       {showInvitationModal && (
-        <InvitationModal setShowInvitationModal={setShowInvitationModal} />
+        <InvitationModal setShowInvitationModal={setShowInvitationModal} inviteEmail={inviteEmail} />
       )}
     </div>
   );
