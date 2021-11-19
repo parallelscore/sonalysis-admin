@@ -15,7 +15,7 @@ const AllCoaches = ({history}) => {
 
   const dispatch = useDispatch()
 
-  const coachData = allUploadData.filter((coach)=>coach.role!="admin")
+  const coachData = allUploadData.filter((coach)=>coach.role==="coach")
 
   useEffect(() => {
     const userId = profile._id;

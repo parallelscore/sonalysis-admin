@@ -47,14 +47,14 @@ const Home = () => {
         setIsLoading(false)
         console.log({ res })
         if (res.status === 200) {
-          if(res.data.data.user.role=="admin"){
-
-            cookie.set("auth", res.data.data.auth_token);
-            dispatch(getProfileRequest(res.data.data.user))
-            window.location.replace("/app")
+          const role =res.data.data.user.role
+          if(role=="coach"){
+            setErrorMessage("You are not an Admin")
             return
           }
-          setErrorMessage("You are not an Admin")
+          cookie.set("auth", res.data.data.auth_token);
+            dispatch(getProfileRequest(res.data.data.user))
+            window.location.replace("/app")
         setInterval(()=>setErrorMessage(""),8000)
           return 
         }

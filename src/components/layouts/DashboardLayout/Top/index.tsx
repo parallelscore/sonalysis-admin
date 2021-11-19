@@ -33,7 +33,7 @@ const Top = () => {
           <div className="ml-5">
 
             <div className="name">{profile?.fullName}</div>
-            <div className="name">Coach<img src={WaveIcon} alt="waving hand" /></div>
+            <div className="name">{profile.role}<img src={WaveIcon} alt="waving hand" /></div>
           </div>
         </div>
       </div>

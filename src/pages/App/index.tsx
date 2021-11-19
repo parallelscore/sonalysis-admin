@@ -18,6 +18,7 @@ import CoAdmins from "./CoAdmins";
 import ApproveModal from "../../components/ApproveModal";
 import CreateCoAdmin from "./CoAdmins/CreateCoAdminsModal";
 import InvitationModal from "./CoAdmins/InvitationModal";
+import ViewCoAdmins from "./CoAdmins/ViewCoAdmins";
 
 export interface CardProps {
   number?: number;
@@ -48,10 +49,14 @@ const App = (props) => {
           {/* <Route  path={`${path}/admins`}>
             <PlayerLibrary />
           </Route> */}
-          <Route path={`${path}/admins`}>
-            <CoAdmins />
-            {/* <CreateCoAdmin /> */}
-            {/* <InvitationModal /> */}
+          <Route path={`${path}/co-admins/:admin_id`}>
+            <ViewCoAdmins />
+          </Route>
+          <Route path={`${path}/co-admins`}>
+            <CoAdmins name={"Co-Admins"} endpoint={"co-admin"}/>
+          </Route>
+          <Route path={`${path}/admins`} exact>
+            <CoAdmins name={"Admins"} endpoint={"admin"} />
           </Route>
         </Switch>
       </DashboardLayout>

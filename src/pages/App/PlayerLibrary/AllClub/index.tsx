@@ -4,6 +4,7 @@ import UploadIcon from "../../../../assets/icons/upload-icon.svg"
 import SearchIcon from "../../../../assets/icons/search-icon.svg"
 import EmptyFile from "../../../../assets/icons/empty-file.svg"
 import NoClub from "../../../../assets/images/no-club.svg"
+import DeleteIcon from "../../assets/icons/delete.svg"
 
 import UploadProgressModal from "../../../../components/UploadProgressModal"
 import { useDispatch, useSelector } from "react-redux"
@@ -139,7 +140,7 @@ const Analytics = () => {
                       <button className={item.analyzed ? "view" : "analyzing"} onClick={() => handleRedirect(item.analyzed, item)}>{item.analyzed ? "View analytics" : item.model_data.isFootballVideo? "Not a football" : "Analyzing"}</button>
                     </div> */}
                     <div className="col-2 delete" onClick={() => handleVideoDelete({ id: item._id, name: item.filename })}>
-                      Delete
+                    <img src={DeleteIcon} alt="delete icon" />
                     </div>
                   </div>
                 ))

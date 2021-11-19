@@ -44,6 +44,21 @@ const logOut = (error) => {
         return error.response;
       });
   }
+  export async function cloudinaryPostCall(endpoint, data) {
+    return axios({
+      method: 'POST',
+      url: endpoint,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data,
+    })
+      .then((response) => response)
+      .catch((error) => {
+        logOut(error)
+        return error.response;
+      });
+  }
   export async function s3PostCall(endpoint, data, headers) {
 
     const config = {

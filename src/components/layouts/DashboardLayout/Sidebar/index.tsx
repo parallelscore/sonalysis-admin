@@ -44,7 +44,7 @@ const Home = () => {
       id: 2,
       icon: ClubLibrary,
       title: "Admins",
-      access: ["owner",],
+      access: ["owner"],
       link: "/app/admins",
     },
     {
@@ -52,7 +52,7 @@ const Home = () => {
       icon: Admins,
       title: "Co-Admins",
       access: ["admin", "owner"],
-      link: "/app/admins",
+      link: "/app/co-admins",
     },
   ]
 
