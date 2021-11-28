@@ -1,15 +1,14 @@
-@import "../../../assets//styles/variable.scss";
+@import '../../../assets//styles/variable.scss';
 
-
-.modal1{
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(8, 8, 8, 0.4);
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  }
+.modal1 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(8, 8, 8, 0.4);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

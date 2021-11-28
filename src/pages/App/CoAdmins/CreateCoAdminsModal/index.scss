@@ -1,4 +1,4 @@
-@import "../../../../assets/styles/variable.scss";
+@import '../../../../assets/styles/variable.scss';
 .create_admin_modal_container {
     background-color: #131313;
     border-radius: 25px;
@@ -37,7 +37,7 @@
             margin-top: 0.5em;
             padding: 1em;
         }
-        input[type="checkbox"] {
+        input[type='checkbox'] {
             background: transparent !important;
             border: 6px solid #811aff !important;
         }
@@ -65,16 +65,16 @@
                 width: 50px;
             }
         }
-.user-photo{
-    width:120px ;
-    height: 120px;
-    img{
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-    }
-}
+        .user-photo {
+            width: 120px;
+            height: 120px;
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        }
         .btns_container {
             align-items: center;
             justify-content: right;

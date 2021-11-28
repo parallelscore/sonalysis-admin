@@ -1,15 +1,11 @@
-import { combineReducers } from "redux";
-import example from "./example";
-import profile from "./profile";
-import upload from "./upload"
-import location from "./locations"
-
-
+import { combineReducers } from 'redux';
+import profile from './profile';
+import upload from './upload';
+import location from './locations';
 
 export default combineReducers({
-   // reducers here
-   location,
-   upload,
-   profile,
-   example
+    // reducers here
+    location,
+    upload,
+    profile,
 });

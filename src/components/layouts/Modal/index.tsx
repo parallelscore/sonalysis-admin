@@ -1,13 +1,7 @@
-
-import React, { useState } from "react";
-import "./index.scss"
+import './index.scss';
 
 const Modal = (props) => {
-  return (
-    <div className="modal1">
-      {props.children}
-    </div>
-  );
+    return <div className='modal1'>{props.children}</div>;
 };
 
-export default Modal
+export default Modal;

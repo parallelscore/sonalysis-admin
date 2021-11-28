@@ -1,15 +1,12 @@
-import "./index.scss"
-import Analytics from "../Clubs/AllClubs";
+import './index.scss';
 
 const Dashbaord = () => {
-
-  return (
-    <div className="text-center">
-      Dashbaord
-      {/* <Analytics /> */}
-    </div>
-
-  );
+    return (
+        <div className='text-center'>
+            Dashbaord
+            {/* <Analytics /> */}
+        </div>
+    );
 };
 
-export default Dashbaord
+export default Dashbaord;

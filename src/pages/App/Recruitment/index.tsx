@@ -1,13 +1,7 @@
-import "./index.scss"
+import './index.scss';
 
 const Recruitment = () => {
-
-  return (
-    <div className="text-center">
-      Recruitment
-    </div>
-
-  );
+    return <div className='text-center'>Recruitment</div>;
 };
 
-export default Recruitment
+export default Recruitment;
