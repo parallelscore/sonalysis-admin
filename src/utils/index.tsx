@@ -1,6 +1,6 @@
 import cookie from "js-cookie"
 import data from "../assets/data";
-export const BASE_URL = "http://api.sonalysis.io:3000";
+export const BASE_URL = process.env.REACT_APP_BASE_URL;;
 
 
 export const logOut = () => {
@@ -25,7 +25,7 @@ export const playerPositions = {
 
 const getTeamValue = () => {
     const team = data.TeamA
-    console.log({ data })
+    return team
 }
 
 getTeamValue()

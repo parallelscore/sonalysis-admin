@@ -1,54 +1,53 @@
-@import "../../assets//styles/variable.scss";
+@import '../../assets//styles/variable.scss';
 
-
-.drop-n-drop{
-  background: #131313;
-border-radius: 25px;
-text-align: center;
-button{
-  background-color: #A257FF;
-  color: #fff;
-  border-radius: 16px;
-}
-.min-cancel{
-
-  button{
-    background-color: transparent;
-    color: #fff;
-  }
-  .cancel{
-    color: #FF4444;
-  }
-}
-input{
-  display: none;
-}
-.drop-zone{
-  background: #222222;
-border: 1px dashed #A257FF;
-border-radius: 10px;
-// width: 328px;
-// height: 178px;
-margin: 0 auto;
-margin-top: 2em;
-}
-.text{
-  label, span{
-    color: #FFD601;
-    cursor: pointer;
-  }
-}
-.progress-section{
-  .progress-outer{
-    margin-top: 1em;
-    background: #C4C4C4;
-    height: 7px;
-    border-radius: 10px;
-  }
-  .progress-inner{
-    background: #A257FF;
-    height: 7px;
-    border-radius: 10px;
-  }
-}
+.drop-n-drop {
+    background: #131313;
+    border-radius: 25px;
+    text-align: center;
+    button {
+        background-color: #a257ff;
+        color: #fff;
+        border-radius: 16px;
+    }
+    .min-cancel {
+        button {
+            background-color: transparent;
+            color: #fff;
+        }
+        .cancel {
+            color: #ff4444;
+        }
+    }
+    input {
+        display: none;
+    }
+    .drop-zone {
+        background: #222222;
+        border: 1px dashed #a257ff;
+        border-radius: 10px;
+        // width: 328px;
+        // height: 178px;
+        margin: 0 auto;
+        margin-top: 2em;
+    }
+    .text {
+        label,
+        span {
+            color: #ffd601;
+            cursor: pointer;
+        }
+    }
+    .progress-section {
+        .progress-outer {
+            margin-top: 1em;
+            background: #c4c4c4;
+            height: 7px;
+            border-radius: 10px;
+        }
+        .progress-inner {
+            background: #a257ff;
+            height: 7px;
+            border-radius: 10px;
+        }
+    }
 }

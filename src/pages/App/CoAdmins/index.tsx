@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import SearchIcon from "../../../assets/icons/search-icon.svg";
